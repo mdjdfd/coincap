@@ -27,6 +27,6 @@ class ErrorInterceptor: Interceptor {
     }
 
     companion object{
-        private const val TAG = "HttpErrorInterceptor:"
+        private const val TAG = "ErrorInterceptor:"
     }
 }

@@ -37,7 +37,7 @@ fun CoincapNavigation(eventHandler: EventHandler) {
                 type = NavType.StringType
             })
         ) { backStack ->
-            val id = requireNotNull(backStack.arguments?.getString(ASSET_ID))
+            val id = requireNotNull(backStack.arguments?.getString(ASSET_ID)){"User id is required"}
             AssetPreviewScreen(id, eventHandler, onBackRequest = {
                 if (it is AssetPreviewContract.Effect.Back.ToList) {
                     navController.popBackStack()

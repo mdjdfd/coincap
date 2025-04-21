@@ -9,7 +9,7 @@ class AssetPreviewContract {
     }
 
     data class State(
-        val asset: Asset? = null,
+        val asset: Asset?,
         val isLoading: Boolean = true,
         val isError: Boolean = false
     )

@@ -80,7 +80,7 @@ fun AssetPreviewScreen(
         ) {
             when {
                 state.isLoading -> Loader()
-                //state.isError -> Toast.makeText(context, messageError, Toast.LENGTH_SHORT).show()
+                state.isError -> Toast.makeText(context, messageError, Toast.LENGTH_SHORT).show()
                 else -> state.asset?.let { AssetDetails(state.asset) }
             }
         }

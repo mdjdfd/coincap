@@ -75,7 +75,7 @@ fun AssetListScreen(
         ) {
             when {
                 state.isLoading -> Loader()
-                //state.isError -> Toast.makeText(context, messageError, Toast.LENGTH_SHORT).show()
+                state.isError -> Toast.makeText(context, messageError, Toast.LENGTH_SHORT).show()
                 else -> AssetList(assets = state.assets) { asset ->
                     eventHandler.tapped(asset)
                 }

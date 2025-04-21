@@ -2,7 +2,7 @@ package com.example.coincap.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.ContainerHost
 
@@ -17,6 +17,5 @@ fun <STATE : Any, SIDE_EFFECT : Any> ContainerHost<STATE, SIDE_EFFECT>.observe(
             }
         }
     }
-
-    return container.stateFlow.collectAsState().value
+    return container.stateFlow.collectAsStateWithLifecycle().value
 }

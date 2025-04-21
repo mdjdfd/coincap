@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -30,6 +32,13 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            val keystoreFile = project.rootProject.file("local.properties")
+            val properties = Properties()
+            properties.load(keystoreFile.inputStream())
+            val apiKey = properties.getProperty("API_KEY") ?: ""
+            buildConfigField(type = "String", name = "API_KEY", value = apiKey)
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -40,6 +49,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.2"
@@ -56,6 +66,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation (libs.androidx.lifecycle.runtime.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -73,7 +84,7 @@ dependencies {
     implementation(libs.orbit.core)
     implementation(libs.orbit.viewmodel)
 
-    // Hilt (https://developer.android.com/training/dependency-injection/hilt-android)
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     androidTestImplementation(libs.hilt.android.testing)

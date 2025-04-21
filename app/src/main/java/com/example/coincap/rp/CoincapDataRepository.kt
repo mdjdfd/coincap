@@ -3,7 +3,6 @@ package com.example.coincap.rp
 import com.example.coincap.rp.model.Asset
 import com.example.coincap.rs.CoincapService
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
