@@ -12,3 +12,11 @@
 ### Clean the project using `./gradlew clean`
 ### Build the project using `./gradlew assembleDebug` (For debug build)
 ### Run the application.
+
+## Successful run should provide similar following outputs:
+<div>
+  <img src="https://github.com/mdjdfd/coincap/blob/master/screenshots/Screenshot_20250423_230126.png" alt="MainScreen1" height="300" width="160"/>
+  <img src="https://github.com/mdjdfd/coincap/blob/master/screenshots/Screenshot_20250423_230204.png" alt="MainScreen2" height="300" width="160"/>
+  <img src="https://github.com/mdjdfd/coincap/blob/master/screenshots/Screenshot_20250423_230223.png" alt="PreviewScreen1" height="300" width="160"/>
+  <img src="https://github.com/mdjdfd/coincap/blob/master/screenshots/Screenshot_20250423_230246.png" alt="PreviewScreen2" height="300" width="160"/>
+</div>
