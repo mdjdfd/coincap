@@ -12,9 +12,17 @@ import com.example.coincap.util.EventHandler
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+/**
+ * Activity to start the Jetpack compose UI from the onCreate
+ * AndroidEntryPoint annotation indicates class to be setup for injection using dagger hilt android component.
+ */
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    /**
+     * Field injection of EventHandler for handling user event
+     */
     @Inject
     lateinit var eventHandler: EventHandler
 

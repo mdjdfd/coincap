@@ -6,6 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * Interface that helps calling REST api.
+ */
+
 interface ApiClient {
 
     @GET("/v3/assets")

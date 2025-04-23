@@ -19,7 +19,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @DelicateCoroutinesApi
-class AssetListViewModelTest {
+class AssetPreviewViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -27,47 +27,49 @@ class AssetListViewModelTest {
 
     private val eventHandler = EventHandler(Dispatchers.Main)
 
-
     private val coincapRepository = mockk<CoincapRepository>(relaxed = true)
 
 
+
     @Before
-    fun setUp() {
+    fun setUp(){
         MockKAnnotations.init(this)
     }
 
     @Test
-    fun `when viewmodel initialzed then should emit initial view state`() = runTest {
+    fun `when viewmodel initialized then should emit initial view state`() = runTest {
         // Given
-        val initialViewState = AssetListContract.State(
-            assets = listOf(),
+        val id = "bitcoin"
+        val initialViewState = AssetPreviewContract.State(
+            asset = null,
             isLoading = true,
             isError = false
         )
 
         // When
-        val viewModel = AssetListViewModel(coincapRepository, eventHandler)
+        val viewModel = AssetPreviewViewModel(id, coincapRepository, eventHandler)
 
         // Then
         assertEquals(initialViewState, viewModel.container.stateFlow.value)
     }
 
     @Test
-    fun `when getAssets called then should emit view state`() = runTest {
+    fun `when getAsset called then should emit view state`() = runTest {
         // Given
-        val assets = getListOfAssets()
-        val viewState = AssetListContract.State(
-            assets = assets,
+        val id = "bitcoin"
+        val asset = getListOfAssets()[0]
+        val viewState = AssetPreviewContract.State(
+            asset = asset,
             isLoading = false,
             isError = false
         )
-        coEvery { coincapRepository.getAssets() } returns flowOf(Result.success(viewState.assets))
+        coEvery { coincapRepository.getAsset(id) } returns flowOf(Result.success(viewState.asset!!))
 
         // When
-        val viewModel = AssetListViewModel(coincapRepository, eventHandler)
+        val viewModel = AssetPreviewViewModel(id, coincapRepository, eventHandler)
 
         backgroundScope.launch {
-            viewModel.collectAssets()
+            viewModel.collectAssetDetails()
         }
 
         // Then
@@ -76,6 +78,5 @@ class AssetListViewModelTest {
             cancelAndIgnoreRemainingEvents()
         }
     }
+
 }
-
-

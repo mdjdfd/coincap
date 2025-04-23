@@ -1,7 +1,6 @@
 package com.example.coincap.rp
 
 import com.example.coincap.getListOfAssets
-import com.example.coincap.rp.model.Asset
 import com.example.coincap.rp.model.AssetListModel
 import com.example.coincap.rp.model.SingleAssetModel
 import com.example.coincap.rp.network.ApiClient

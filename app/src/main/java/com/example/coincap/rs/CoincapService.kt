@@ -8,6 +8,13 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * This class is responsible for making api call. Apiclient and CoroutineDispatcher is injected via constructor injection.
+ * @param apiClient helps calling REST API
+ * @param ioDispatcher perform api call in IO dispatcher.
+ *
+ */
+
 class CoincapService @Inject constructor(
     private val apiClient: ApiClient,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher

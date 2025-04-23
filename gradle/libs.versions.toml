@@ -21,6 +21,7 @@ orbitViewmodel = "4.5.0"
 retrofitVersion = "2.9.0"
 converterGson = "2.9.0"
 robolectric = "4.14.1"
+turbine = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -63,6 +64,7 @@ converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref
 dagger-hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

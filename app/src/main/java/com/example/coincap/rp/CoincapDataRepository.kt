@@ -6,6 +6,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
+/**
+ * This class is responsible for collecting flow of data from the service. Api service is injected via constructor injection.
+ * @param coincapService service class where the api call is made.
+ *
+ */
+
 class CoincapDataRepository @Inject constructor(
     private val coincapService: CoincapService,
 ) : CoincapRepository {

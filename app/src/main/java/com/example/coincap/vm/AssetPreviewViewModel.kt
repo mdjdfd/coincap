@@ -49,7 +49,7 @@ class AssetPreviewViewModel @AssistedInject constructor(
     }
 
 
-    private fun collectAssetDetails() = intent {
+    fun collectAssetDetails() = intent {
         viewModelScope.launch {
             reduce {
                 state.copy(isLoading = true, isError = false)

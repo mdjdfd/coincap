@@ -47,7 +47,7 @@ class AssetListViewModel @Inject constructor(
     }
 
 
-    private fun collectAssets() = intent {
+    fun collectAssets() = intent {
         viewModelScope.launch {
             reduce {
                 state.copy(isLoading = true, isError = false)
@@ -56,7 +56,6 @@ class AssetListViewModel @Inject constructor(
             coincapRepository.getAssets().collect {
                 it.onSuccess {
                     reduce {
-                        Log.d(TAG, "_log collectAssets: $it")
                         state.copy(assets = it, isLoading = false)
                     }
                     postSideEffect(AssetListContract.Effect.Loaded)

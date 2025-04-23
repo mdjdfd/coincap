@@ -4,18 +4,26 @@ import com.example.coincap.rp.model.Asset
 import com.example.coincap.rp.model.SingleAssetModel
 import com.example.coincap.rp.network.ApiClient
 import com.example.coincap.rs.CoincapService
+import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.confirmVerified
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import org.junit.Test
 
 class CoincapServiceTest {
 
     private val apiClient = mockk<ApiClient>()
     private val coincapService = CoincapService(apiClient, Dispatchers.IO)
+
+
+    @Before
+    fun setUp() {
+        MockKAnnotations.init(this)
+    }
 
     @Test
     fun `when getAssets called then should call getAssets from API`() = runTest {

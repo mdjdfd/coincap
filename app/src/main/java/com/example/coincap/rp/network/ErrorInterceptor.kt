@@ -5,6 +5,10 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
+/**
+ * ErrorInterceptor is responsible to chain the OkHttp interceptor for possible network error.
+ */
+
 class ErrorInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request: Request = chain.request()
