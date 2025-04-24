@@ -14,6 +14,9 @@ import com.example.coincap.util.EventHandler
 import com.example.coincap.vm.AssetListContract
 import com.example.coincap.vm.AssetPreviewContract
 
+/**
+ * Function is responsible for control navigation throughout the application.
+ */
 @Composable
 fun CoincapNavigation(eventHandler: EventHandler) {
 
@@ -48,7 +51,9 @@ fun CoincapNavigation(eventHandler: EventHandler) {
 
 }
 
-
+/**
+ * Object provides all the navigation parameters used by nav controller to track navigation stack.
+ */
 object Navigation {
     object Args {
         const val ASSET_ID = "asset_id"
@@ -60,6 +65,9 @@ object Navigation {
     }
 }
 
+/**
+ * Go back to previous screen by navigation backstack call.
+ */
 fun NavController.navigateToPreview(id: String) {
     navigate(route = "${Navigation.Routes.ASSETS_LIST}/$id")
 }

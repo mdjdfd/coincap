@@ -12,6 +12,9 @@ import androidx.compose.ui.unit.sp
 import com.example.coincap.R
 import com.example.coincap.ui.theme.HaitiDark
 
+/**
+ * Top bar of the listview screen.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AssetListTopBar() {

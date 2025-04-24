@@ -20,6 +20,14 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import kotlin.time.Duration.Companion.minutes
 
+/**
+ * ViewModel is responsible for collecting data from service layer and provide is to view layer. It also works as a bridge between view and data.
+ * HiltViewModel will be consumed by composable functions that consists of constructor injection. ContainerHost hosts current UI state and Side effects.
+ * @id id of the selected item.
+ * @param coincapRepository instance of repository that provides data.
+ * @param eventHandler instance of event handler.
+ */
+
 @HiltViewModel(assistedFactory = AssetPreviewViewModel.AssetPreviewViewModelFactory::class)
 class AssetPreviewViewModel @AssistedInject constructor(
     @Assisted private val id: String,
@@ -28,6 +36,9 @@ class AssetPreviewViewModel @AssistedInject constructor(
 ) : ContainerHost<AssetPreviewContract.State, AssetPreviewContract.Effect>, ViewModel() {
 
 
+    /**
+     * Initial UI state
+     */
     override val container =
         container<AssetPreviewContract.State, AssetPreviewContract.Effect>(
             AssetPreviewContract.State(
@@ -38,6 +49,9 @@ class AssetPreviewViewModel @AssistedInject constructor(
         }
 
 
+    /**
+     * Collect item click event as a hot flow.
+     */
     private fun collectTap() = intent {
         viewModelScope.launch {
             eventHandler.tapEventBackPressed.collectLatest {
@@ -49,6 +63,9 @@ class AssetPreviewViewModel @AssistedInject constructor(
     }
 
 
+    /**
+     * Collect data from the repository and update UI state as well as side effects.
+     */
     fun collectAssetDetails() = intent {
         viewModelScope.launch {
             reduce {
@@ -70,6 +87,9 @@ class AssetPreviewViewModel @AssistedInject constructor(
     }
 
 
+    /**
+     * Update the data periodically after one minute.
+     */
     private var updateTask: Job? = null
     private fun startUpdateTask() {
         updateTask?.cancel()
@@ -82,18 +102,27 @@ class AssetPreviewViewModel @AssistedInject constructor(
 
     }
 
+    /**
+     * Clear the viewmodel scope
+     */
     override fun onCleared() {
         super.onCleared()
         updateTask = null
         viewModelScope.cancel()
     }
 
+    /**
+     * Interface that provides item id from the JetpackCompose to Viewmodel as a result of user click.
+     */
     @AssistedFactory
     interface AssetPreviewViewModelFactory {
         fun create(id: String): AssetPreviewViewModel
     }
 
 
+    /**
+     * Starting point of the viewmodel.
+     */
     init {
         startUpdateTask()
     }

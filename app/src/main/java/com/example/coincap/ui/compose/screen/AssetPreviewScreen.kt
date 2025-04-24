@@ -36,6 +36,9 @@ import com.example.coincap.util.observe
 import com.example.coincap.vm.AssetPreviewContract
 import com.example.coincap.vm.AssetPreviewViewModel
 
+/**
+ * Function is responsible to show the details view when an item is pressed.
+ */
 @Composable
 fun AssetPreviewScreen(
     id: String,
@@ -88,6 +91,9 @@ fun AssetPreviewScreen(
 }
 
 
+/**
+ * Preview screen UI.
+ */
 @Composable
 fun AssetDetails(
     asset: Asset
@@ -125,7 +131,9 @@ fun AssetDetails(
     }
 }
 
-
+/**
+ * Reusable item view to show details.
+ */
 @Composable
 fun InfoLine(key: String, value: String) {
     Row(

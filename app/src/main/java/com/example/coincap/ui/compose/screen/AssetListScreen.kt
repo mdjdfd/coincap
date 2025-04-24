@@ -42,6 +42,9 @@ import com.example.coincap.util.observe
 import com.example.coincap.vm.AssetListContract
 import com.example.coincap.vm.AssetListViewModel
 
+/**
+ * Show list of data collected from view model.
+ */
 @Composable
 fun AssetListScreen(
     eventHandler: EventHandler,
@@ -84,7 +87,9 @@ fun AssetListScreen(
     }
 }
 
-
+/**
+ * Scrollable jetpack compose list.
+ */
 @Composable
 fun AssetList(
     assets: List<Asset>,
@@ -107,6 +112,9 @@ fun AssetList(
     }
 }
 
+/**
+ * Clickable list item.
+ */
 @Composable
 fun AssetListItem(
     asset: Asset,
@@ -180,7 +188,9 @@ fun AssetListItem(
     }
 }
 
-
+/**
+ * Mapped resource image based on acceptance criteria.
+ */
 private fun getImageDrawable(name: String): Int {
     return when (name) {
         "BITCOIN" -> R.drawable.bitcoin

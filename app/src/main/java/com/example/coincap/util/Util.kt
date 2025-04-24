@@ -3,8 +3,15 @@ package com.example.coincap.util
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
+
+/**
+ * The object helps to format numbers.
+ */
 object Util {
 
+    /**
+     * Format big numbers into user readable form.
+     */
     fun moneyFormatter(money: Double): String {
         var value = money
         val arr = arrayOf("", "K", "M", "B", "T", "P", "E")
@@ -17,6 +24,9 @@ object Util {
         return String.format("$%s%s", decimalFormat.format(value), arr[index])
     }
 
+    /**
+     * Format decimal input to percentage.
+     */
     fun changePercentageFormatter(change: BigDecimal): String{
         val decimalFormat = DecimalFormat("#,##0.00")
         return String.format("%s", decimalFormat.format(change) + "%")

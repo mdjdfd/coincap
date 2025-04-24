@@ -2,6 +2,10 @@ package com.example.coincap.rp.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Data class responsible for getter and setter serialized by Gson.
+ */
+
 data class AssetListModel(
 	@field:SerializedName("data") val data: List<Asset>,
 	@field:SerializedName("timestamp") val timestamp: Long

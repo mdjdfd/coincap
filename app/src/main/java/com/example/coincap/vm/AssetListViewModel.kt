@@ -1,6 +1,5 @@
 package com.example.coincap.vm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coincap.rp.CoincapRepository
@@ -20,18 +19,31 @@ import javax.inject.Inject
 import kotlin.time.Duration.Companion.minutes
 
 
+/**
+ * ViewModel is responsible for collecting data from service layer and provide is to view layer. It also works as a bridge between view and data.
+ * HiltViewModel will be consumed by composable functions that consists of constructor injection. ContainerHost hosts current UI state and Side effects.
+ * @param coincapRepository instance of repository that provides data.
+ * @param eventHandler instance of event handler.
+ */
+
 @HiltViewModel
 class AssetListViewModel @Inject constructor(
     private val coincapRepository: CoincapRepository,
     private val eventHandler: EventHandler
 ) : ContainerHost<AssetListContract.State, AssetListContract.Effect>, ViewModel() {
 
+    /**
+     * Initial UI state
+     */
     override val container =
         container<AssetListContract.State, AssetListContract.Effect>(AssetListContract.State()) {
             collectTap()
         }
 
 
+    /**
+     * Collect item click event as a hot flow.
+     */
     private fun collectTap() = intent {
         viewModelScope.launch {
             eventHandler.tapEventSharedFlow.collectLatest {
@@ -47,6 +59,9 @@ class AssetListViewModel @Inject constructor(
     }
 
 
+    /**
+     * Collect data from the repository and update UI state as well as side effects.
+     */
     fun collectAssets() = intent {
         viewModelScope.launch {
             reduce {
@@ -69,6 +84,9 @@ class AssetListViewModel @Inject constructor(
     }
 
 
+    /**
+     * Update the data periodically after one minute.
+     */
     private var updateTask: Job? = null
     private fun startUpdateTask() {
         updateTask?.cancel()
@@ -81,7 +99,9 @@ class AssetListViewModel @Inject constructor(
 
     }
 
-
+    /**
+     * Clear the viewmodel scope
+     */
     override fun onCleared() {
         super.onCleared()
         updateTask = null
@@ -89,6 +109,9 @@ class AssetListViewModel @Inject constructor(
     }
 
 
+    /**
+     * Starting point of the viewmodel.
+     */
     init {
         startUpdateTask()
     }

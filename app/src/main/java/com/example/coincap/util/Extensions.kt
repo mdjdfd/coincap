@@ -6,6 +6,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.ContainerHost
 
+/**
+ * Extension function that observe the current UI state and handle side effect for each state. The function works as bridge between viewmodel and view layer.
+ */
 @Composable
 fun <STATE : Any, SIDE_EFFECT : Any> ContainerHost<STATE, SIDE_EFFECT>.observe(
     sideEffectHandler: (suspend (sideEffect: SIDE_EFFECT) -> Unit)? = null

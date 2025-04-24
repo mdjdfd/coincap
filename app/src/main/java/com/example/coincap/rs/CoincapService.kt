@@ -28,7 +28,12 @@ class CoincapService @Inject constructor(
     }
 }
 
-
+/**
+ * Function that initiate the network call in a catching block and returns success/failure response.
+ * @param dispatcher instance of CoroutineDispatcher
+ * @param call provided lambda function to call
+ * @return returns success/failure response.
+ */
 suspend fun <T> apiCall(
     dispatcher: CoroutineDispatcher,
     call: suspend () -> T

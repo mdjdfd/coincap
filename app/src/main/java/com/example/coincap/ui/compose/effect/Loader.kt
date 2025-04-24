@@ -8,7 +8,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.coincap.ui.theme.LightBlue
 
-
+/**
+ * Composable loader from showing progress.
+ */
 @Composable
 fun Loader() {
     Box (

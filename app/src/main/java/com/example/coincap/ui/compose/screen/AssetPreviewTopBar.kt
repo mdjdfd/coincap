@@ -14,6 +14,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.coincap.ui.theme.HaitiDark
 
+/**
+ * Top bar of the preview screen.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AssetPreviewTopBar(title: String, onBackPressed: () -> Unit) {

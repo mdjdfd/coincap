@@ -11,10 +11,20 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Singleton
 
+/**
+ * Singleton module contains all component classes and dependency for data.
+ * Scope of the components throughout application lifecycle.
+ */
 @InstallIn(SingletonComponent::class)
 @Module
 object RepositoryModule {
 
+    /**
+     * Provides service class where api call is being done.
+     * @param apiClient instance of api client.
+     * @param ioDispatcher instance of coroutine IO dispatcher.
+     * @return returns service instance.
+     */
     @Singleton
     @Provides
     fun provideCoincapService(
@@ -24,6 +34,11 @@ object RepositoryModule {
         return CoincapService(apiClient, ioDispatcher)
     }
 
+    /**
+     * Provides data for the view layer.
+     * @param coincapService instance of service class.
+     * @return returns the data repository.
+     */
     @Singleton
     @Provides
     fun provideCoincapRepository(

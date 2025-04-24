@@ -11,6 +11,10 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Class is responsible to handle item and back press event.
+ * @param mainDispatcher instance of coroutine main Dispatcher.
+ */
 class EventHandler @Inject constructor(
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) {
