@@ -124,9 +124,9 @@ fun AssetDetails(
             Spacer(modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.dp16)))
             HorizontalDivider(color = Color.Blue, thickness = 1.dp)
             Spacer(modifier = Modifier.padding(top = dimensionResource(id = R.dimen.dp16)))
-            InfoLine(key = "Market Cap", value = Util.moneyFormatter(asset.priceUsd.toDouble()))
-            InfoLine(key = "Volume (24hr)", value = Util.moneyFormatter(asset.priceUsd.toDouble()))
-            InfoLine(key = "Supply", value = Util.moneyFormatter(asset.priceUsd.toDouble()).substring(1))
+            InfoLine(key = "Market Cap", value = Util.moneyFormatter(asset.marketCapUsd.toDouble()))
+            InfoLine(key = "Volume (24hr)", value = Util.moneyFormatter(asset.volumeUsd24Hr.toDouble()))
+            InfoLine(key = "Supply", value = Util.moneyFormatter(asset.supply.toDouble()).substring(1))
         }
     }
 }
