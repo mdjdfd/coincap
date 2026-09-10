@@ -2,16 +2,16 @@
 
 ## API Documentation:
 
-### This application uses CoinCap API v3. The documentation can be found [API Documentation.](https://pro.coincap.io/api-docs)
+###### This application uses CoinCap API v3. The documentation can be found [API Documentation.](https://pro.coincap.io/api-docs)
 
 ## How to run the application:
 
-### Retrive the CoinCap API key by login/register to [login page.](https://pro.coincap.io/signin) 
-### Paste the api key to android project `local.properties` file to a variable `API_KEY`. As an example: `API_KEY = {api_key}`
-### `API_KEY = b0c93ca5cfbca883491db82d2e2712238f289ea66bb4e01cd1f0e8cf37991e6e` (Only for assessment)
-### Clean the project using `./gradlew clean`
-### Build the project using `./gradlew assembleDebug` (For debug build)
-### Run the application.
+###### Retrive the CoinCap API key by login/register to [login page.](https://pro.coincap.io/signin) 
+###### Paste the api key to android project `local.properties` file to a variable `API_KEY`. As an example: `API_KEY = {api_key}`
+###### `API_KEY = b0c93ca5cfbca883491db82d2e2712238f289ea66bb4e01cd1f0e8cf37991e6e` (Only for assessment)
+###### Clean the project using `./gradlew clean`
+###### Build the project using `./gradlew assembleDebug` (For debug build)
+###### Run the application.
 
 ## Successful run should provide similar following outputs:
 <div>
